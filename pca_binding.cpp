@@ -94,9 +94,19 @@ void RunPCA(arma::mat& dataset,
     dataset.n_rows << " dimensions)." << endl;
 }
 
+
+//an R object is a pointer to an s expression typdef in the underlying c code 
+
+/*
 #include <R.h>
 #include <Rinternals.h>
-SEXP
+//wrapper around mlpackMain()
+SEXP pca(SEXP input, SEXP scale, SEXP decomposition_method) {
+
+}
+*/
+
+
 static void mlpackMain()
 {
   //Load the dataset.
@@ -152,3 +162,4 @@ static void mlpackMain()
 }
 
 }
+
