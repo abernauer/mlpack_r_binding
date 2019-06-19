@@ -94,7 +94,9 @@ void RunPCA(arma::mat& dataset,
     dataset.n_rows << " dimensions)." << endl;
 }
 
-
+#include <R.h>
+#include <Rinternals.h>
+SEXP
 static void mlpackMain()
 {
   //Load the dataset.
