@@ -95,17 +95,23 @@ void RunPCA(arma::mat& dataset,
 }
 
 /*
+//to do implement in separate header file 
 //an R object is a pointer to an s expression typdef in the underlying c code 
 
 #include <Rcpp.h>
 
 //function declaration for wrapper around mlpackMain()
 //Rcpp export is an aliase for external "C"
-SEXP pca(SEXP input, SEXP scale, SEXP decomposition_method);
+
+RcppExport SEXP pca(SEXP input, SEXP scale, SEXP decomposition_method);
+
 
 //function definition for wrapper around mlpackMain()
+// include in this file 
+ SEXP pca(SEXP input, SEXP scale, SEXP decomposition_method){
 
- SEXP pca(SEXP input, SEXP scale, SEXP decomposition_method)
+}
+
 */
 
 
