@@ -94,16 +94,18 @@ void RunPCA(arma::mat& dataset,
     dataset.n_rows << " dimensions)." << endl;
 }
 
-
+/*
 //an R object is a pointer to an s expression typdef in the underlying c code 
 
-/*
-#include <R.h>
-#include <Rinternals.h>
-//wrapper around mlpackMain()
-SEXP pca(SEXP input, SEXP scale, SEXP decomposition_method) {
+#include <Rcpp.h>
 
-}
+//function declaration for wrapper around mlpackMain()
+//Rcpp export is an aliase for external "C"
+SEXP pca(SEXP input, SEXP scale, SEXP decomposition_method);
+
+//function definition for wrapper around mlpackMain()
+
+ SEXP pca(SEXP input, SEXP scale, SEXP decomposition_method)
 */
 
 
@@ -159,7 +161,5 @@ static void mlpackMain()
     // save the results
   if (CLI::HasParam("output"))
     CLI::GetParam<arma::mat>("output") = std::move(dataset);
-}
-
 }
 
