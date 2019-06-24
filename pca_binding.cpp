@@ -109,10 +109,11 @@ RcppExport SEXP pca(SEXP input, SEXP scale, SEXP decomposition_method);
 //function definition for wrapper around mlpackMain()
 // include in this file 
  SEXP pca(SEXP input, SEXP scale, SEXP decomposition_method){
-
+ 
 }
 
 */
+
 
 
 static void mlpackMain()
@@ -168,4 +169,6 @@ static void mlpackMain()
   if (CLI::HasParam("output"))
     CLI::GetParam<arma::mat>("output") = std::move(dataset);
 }
+
+
 
