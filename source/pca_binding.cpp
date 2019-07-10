@@ -9,6 +9,9 @@
 #include <mlpack/methods/pca/decomposition_policies/quic_svd_method.hpp>
 #include <mlpack/methods/pca/decomposition_policies/randomized_svd_method.hpp>
 #include <mlpack/methods/pca/decomposition_policies/randomized_block_krylov_method.hpp>
+#ifdef _OPENMP
+#include <omp.h>
+#endif
 
 using namespace mlpack;
 using namespace mlpack::pca;
