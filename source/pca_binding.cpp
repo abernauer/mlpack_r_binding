@@ -114,8 +114,7 @@ RcppExport SEXP pca(SEXP input, SEXP scale, SEXP decomposition_method);
 
 */
 
-
-
+  
 static void mlpackMain()
 {
   //Load the dataset.
@@ -169,5 +168,19 @@ static void mlpackMain()
     CLI::GetParam<arma::mat>("output") = std::move(dataset);
 }
 
+#include <R_ext/Rdynload.h>
 
+static const
+R_CallMethodDef callMethods [] = {
+  {"mlpackMain", (DL_FUNC) &mlpackMain, 0},
+  NULL
+};
 
+void R_init_pca_binding(DllInfo *info)
+{
+  /* Register the .Call routine
+   No .Fortan() or .External() routines
+  */
+  
+  R_registerRoutines(info, NULL, callMethods, NULL, NULL);
+}
