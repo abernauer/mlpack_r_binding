@@ -35,4 +35,23 @@ void CLI_SetParamInt(const char* paramName, int paramValue)
 
    }
 
+  #include <R_ext/Rdynload.h>
+
+#define CDEF(name, n) {#name, (DL_FUNC) &name, n}
+
+  static const
+  R_CMethodDef cEntries[] = {
+    CDEF(CLI_RestoreSettings, 1),
+    CDEF(CLI_SetParamInt, 2),
+    CDEF(CLI_SetParamDouble, 2),
+    {NULL, NULL, 0}
+
+  };
+
+  void R_intit_r_util(DllInfo *dll)
+  {
+    R_registerRoutines(dll, cEntries, NULL, NULL, NULL);
+    R_useDynamicSymbols(dll, FALSE);
+  }
+
 } // extern "C"
