@@ -9,9 +9,12 @@
 #include <mlpack/methods/pca/decomposition_policies/quic_svd_method.hpp>
 #include <mlpack/methods/pca/decomposition_policies/randomized_svd_method.hpp>
 #include <mlpack/methods/pca/decomposition_policies/randomized_block_krylov_method.hpp>
+#include "pca_binding.h"
 #ifdef _OPENMP
 #include <omp.h>
 #endif
+
+
 
 using namespace mlpack;
 using namespace mlpack::pca;
@@ -171,19 +174,6 @@ static void mlpackMain()
     CLI::GetParam<arma::mat>("output") = std::move(dataset);
 }
 
-#include <R_ext/Rdynload.h>
 
-static const
-R_CallMethodDef callMethods [] = {
-  {"mlpackMain", (DL_FUNC) &mlpackMain, 0},
-  NULL
-};
 
-void R_init_pca_binding(DllInfo *info)
-{
-  /* Register the .Call routine
-   No .Fortan() or .External() routines
-  */
-  
-  R_registerRoutines(info, NULL, callMethods, NULL, NULL);
-}
+
