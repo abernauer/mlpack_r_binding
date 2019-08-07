@@ -52,6 +52,7 @@ void CLI_SetParamInt(const char* paramName, int paramValue)
   {
     R_registerRoutines(dll, cEntries, NULL, NULL, NULL);
     R_useDynamicSymbols(dll, FALSE);
+    R_forceSymbols(dll, TRUE);
   }
 
 } // extern "C"
