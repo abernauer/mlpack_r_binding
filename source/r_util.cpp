@@ -329,8 +329,10 @@ void CLI_SetPassed(const char* paramName)
   
 			  
 
-  #include <R_ext/Rdynload.h>
-
+#include <R_ext/Rdynload.h>
+  //function factory for registering C entry points into compiled code or mlpack
+  //Optionally you can specify the data types in the arrays below with there corresponding type REALSXP, LGLSXP, etc.
+ 
 #define CDEF(name, n) {#name, (DL_FUNC) &name, n}
 
   static const
@@ -342,6 +344,7 @@ void CLI_SetPassed(const char* paramName)
 
   };
 
+  // R_useDynamicSymbols(dll, FALSE); ensures the other symbols in C++ are not visible to users 
   void R_intit_r_util(DllInfo *dll)
   {
     R_registerRoutines(dll, cEntries, NULL, NULL, NULL);
