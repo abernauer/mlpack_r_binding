@@ -1,3 +1,9 @@
+#first run R CMD SHLIB -fopenmp -lmlpack -larmadillo -lboost_program_options r_util.cpp
+#run the follow code to link the compiled coad to the R session
+dyn.load("r_util.so")
+
+#functions to call underlying compiled code specifying R data types via coercion 
+
 CLIRestoreSettings <- function(programName)
                   .Call("CLI_RestoreSettings",
 		        as.character(programName))
